@@ -1,20 +1,27 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="tertiary">
+    <ion-button fill="clear" slot="end" (click)="presentActionSheet()">
+      <ion-icon
+        style="color: #fff; font-size: 30px;"
+        name="menu-outline"
+      ></ion-icon>
+    </ion-button>
     <ion-title>
-      Blank
+      Mi chat App
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content padding>
+  <ion-list>
+    <ion-item *ngFor="let chat of chatsRoom" (click)="openChat(chat)">
+      <ion-avatar slot="start">
+        <ion-img [src]="chat.img"></ion-img>
+      </ion-avatar>
+      <ion-label>
+        <h2><b> {{chat.name}} </b></h2>
+        <p>{{chat.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
